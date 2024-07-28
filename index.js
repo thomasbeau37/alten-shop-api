@@ -2,8 +2,11 @@ import express from "express";
 import http from "http";
 import router from "./routes/index.js";
 import cors from "cors";
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swaggerConfig.js';
 
 const app = express();
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 const httpsServer = http.createServer(app);
 const HOST = '0.0.0.0';
 
